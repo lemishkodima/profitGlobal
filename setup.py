@@ -5,17 +5,18 @@ from aiogram import Bot, Dispatcher, F
 import logging
 
 
+
 BOT_TOKEN = '6515098525:AAEDzogDXrZvaRF0C7WDYSsFR6Z6mnYhwZU' 
-CHANNEL_ID = -1001848951668
+CHANNEL_ID =  -1001848951668
 ADMIN_ID = 1889004772
 async def approve_request (chat_join: ChatJoinRequest, bot: Bot):
-   msg= f"Your request has been approved!\n\nJoin our channel:\nhttps://t.me/channel_name"
-   button = InlineKeyboardButton(text='ВСТУПИТЬ', url='https://example.com', disable_web_page_preview=True)   
+   msg= f"Ваша заявка одобрена!\n\nВступить в канал: https://t.me/+_5IborfM7ZUzMjMy"
+   button = InlineKeyboardButton(text='ВСТУПИТЬ', url='https://t.me/+_5IborfM7ZUzMjMy', disable_web_page_preview=True)   
    markup = InlineKeyboardMarkup(inline_keyboard=[[button]])
 
 
-   await bot.send_message(chat_id=chat_join.from_user.id, text=msg, reply_markup=markup)
-   await chat_join.approve()
+   await bot.send_message(chat_id=chat_join.from_user.id, text=msg, reply_markup=markup, disable_web_page_preview=True)
+ 
 
 async def start():
     logging.basicConfig(level=logging.DEBUG,
@@ -37,6 +38,3 @@ async def start():
 if __name__ == '__main__':
     with contextlib.suppress(KeyboardInterrupt, SystemExit):
         asyncio.run(start())
-
-  
-
